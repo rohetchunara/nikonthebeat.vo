@@ -5,9 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: var(--font-playfair), 'Playfair Display Fallback', serif;
+  --font-heading: var(--font-cormorant), 'Cormorant Garamond Fallback', serif;
   --font-sans: var(--font-geist-sans), 'Geist Fallback';
-  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+  --font-mono: var(--font-space-grotesk), 'Space Grotesk Fallback',
+    ui-monospace, monospace;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -74,6 +75,21 @@
   }
   html {
     @apply bg-background font-sans;
+  }
+  /* Cormorant is delicate — give display headings a touch more presence */
+  .font-heading {
+    letter-spacing: 0.01em;
+    font-feature-settings: 'liga' 1, 'dlig' 1;
+  }
+}
+
+@layer utilities {
+  /* deep editorial italic accent for connecting characters like '&' */
+  .amp {
+    font-style: italic;
+    font-weight: 500;
+    font-feature-settings: 'swsh' 1, 'salt' 1;
+    letter-spacing: 0.02em;
   }
 }
 

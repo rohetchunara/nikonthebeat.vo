@@ -96,7 +96,9 @@ export function Hero() {
                       delay: 0.3 + i * 0.022,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="inline-block whitespace-pre"
+                    className={`inline-block whitespace-pre${
+                      char === "&" ? " amp" : ""
+                    }`}
                   >
                     {char}
                   </motion.span>
@@ -155,10 +157,10 @@ export function StatsBand() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
           >
-            <p className="font-heading text-5xl font-semibold tracking-tight text-foreground sm:text-6xl">
+            <p className="font-mono text-5xl font-medium tracking-tight text-foreground sm:text-6xl">
               {stat.value}
             </p>
-            <p className="mt-4 text-sm tracking-[0.04em] text-muted-foreground">
+            <p className="font-mono mt-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
               {stat.label}
             </p>
           </motion.div>

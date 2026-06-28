@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google'
+import { Geist, Space_Grotesk, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import { ThemeEngineProvider } from '@/components/theme-engine'
 import { SiteNav } from '@/components/site-nav'
@@ -9,14 +9,15 @@ import { PageTransition } from '@/components/page-transition'
 import { WhatsAppFab } from '@/components/whatsapp-fab'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
 })
-const playfair = Playfair_Display({
-  variable: '--font-playfair',
+const cormorant = Cormorant_Garamond({
+  variable: '--font-cormorant',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
 })
 
@@ -57,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark bg-background ${geistSans.variable} ${geistMono.variable} ${playfair.variable}`}
+      className={`dark bg-background ${geistSans.variable} ${spaceGrotesk.variable} ${cormorant.variable}`}
     >
       <body className="font-sans antialiased">
         <ThemeEngineProvider>
