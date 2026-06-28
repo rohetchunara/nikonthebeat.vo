@@ -1,4 +1,10 @@
-const SOCIALS = ["INSTAGRAM", "SPOTIFY", "SOUNDCLOUD", "CONTACT"]
+const SOCIALS = [
+  { label: "INSTAGRAM", href: "#" },
+  { label: "SPOTIFY", href: "#" },
+  { label: "SOUNDCLOUD", href: "#" },
+  { label: "WHATSAPP", href: "https://wa.me/9779868573730", external: true },
+  { label: "CONTACT", href: "#" },
+]
 
 export function SiteFooter() {
   return (
@@ -19,11 +25,14 @@ export function SiteFooter() {
         <nav className="flex flex-col gap-3 md:items-end">
           {SOCIALS.map((social) => (
             <a
-              key={social}
-              href="#"
+              key={social.label}
+              href={social.href}
+              {...(social.external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className="text-sm tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
             >
-              {social}
+              {social.label}
             </a>
           ))}
         </nav>
