@@ -78,12 +78,16 @@
 }
 
 @layer utilities {
-  /* the full-page ambient gradient cross-fades over ~1s */
+  /* the full-page ambient gradient cross-fades slowly + elegantly */
   .ambient-canvas {
-    transition: background 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 1.2s cubic-bezier(0.45, 0, 0.55, 1);
   }
   .aura-transition {
-    transition: background 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 1.2s cubic-bezier(0.45, 0, 0.55, 1);
+  }
+  /* soft ambient glow that fades behind an active mood card */
+  .mood-aura {
+    transition: opacity 1.2s cubic-bezier(0.45, 0, 0.55, 1);
   }
 
   /* infinite marquee that eases when hovered */

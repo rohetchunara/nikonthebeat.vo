@@ -145,8 +145,8 @@ export function Hero() {
 
 export function StatsBand() {
   return (
-    <section className="mx-auto max-w-7xl px-5 pb-8 sm:px-8">
-      <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
+    <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-3">
         {STATS.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -154,12 +154,11 @@ export function StatsBand() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
-            className="bg-card px-7 py-8 backdrop-blur-sm"
           >
-            <p className="font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <p className="font-heading text-5xl font-semibold tracking-tight text-foreground sm:text-6xl">
               {stat.value}
             </p>
-            <p className="mt-2 text-sm tracking-[0.04em] text-muted-foreground">
+            <p className="mt-4 text-sm tracking-[0.04em] text-muted-foreground">
               {stat.label}
             </p>
           </motion.div>

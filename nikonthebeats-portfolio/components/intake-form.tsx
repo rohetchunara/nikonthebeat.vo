@@ -4,8 +4,6 @@ import { useState } from "react"
 import { ArrowRight, Check } from "lucide-react"
 import { MOODS, type MoodId } from "@/lib/studio-data"
 
-const STEPS = ["01", "02", "03"]
-
 function Field({
   label,
   ...props
@@ -17,14 +15,26 @@ function Field({
       </span>
       <input
         {...props}
-        className="mt-2 w-full border-b border-border bg-transparent py-3 text-foreground outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-foreground"
+        className="mt-3 w-full border-b border-border/40 bg-transparent py-3 text-foreground outline-none transition-colors duration-500 placeholder:text-muted-foreground/40 focus:border-foreground"
       />
     </label>
   )
 }
 
+function SectionLabel({ index, title }: { index: string; title: string }) {
+  return (
+    <div className="flex items-baseline gap-3">
+      <span className="font-mono text-[11px] tracking-[0.24em] text-muted-foreground">
+        {index}
+      </span>
+      <span className="font-heading text-lg font-medium text-foreground">
+        {title}
+      </span>
+    </div>
+  )
+}
+
 export function IntakeForm() {
-  const [step, setStep] = useState(0)
   const [selectedMoods, setSelectedMoods] = useState<MoodId[]>([])
   const [submitted, setSubmitted] = useState(false)
 
@@ -34,138 +44,102 @@ export function IntakeForm() {
     )
   }
 
+  if (submitted) {
+    return (
+      <section className="mx-auto max-w-3xl px-5 py-24 sm:px-8">
+        <div className="flex flex-col items-center py-10 text-center">
+          <span
+            className="flex h-12 w-12 items-center justify-center rounded-full text-background"
+            style={{ backgroundColor: "var(--mood)" }}
+          >
+            <Check className="h-5 w-5" />
+          </span>
+          <p className="font-heading mt-6 text-2xl font-medium text-foreground">
+            Briefing received.
+          </p>
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            Our studio will review your sonic architecture and respond within
+            two working days.
+          </p>
+        </div>
+      </section>
+    )
+  }
+
   return (
-    <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-      <div className="rounded-2xl border border-border bg-card p-6 sm:p-10">
-        {/* step indicator */}
-        <div className="mt-8 flex items-center gap-2">
-          {STEPS.map((s, i) => (
-            <div key={s} className="flex flex-1 items-center gap-2">
-              <span
-                className="font-mono text-xs"
-                style={{
-                  color: i <= step ? "var(--foreground)" : "var(--muted-foreground)",
-                }}
-              >
-                {s}
-              </span>
-              <span
-                className="h-px flex-1 transition-colors"
-                style={{
-                  backgroundColor: i <= step ? "var(--foreground)" : "var(--border)",
-                }}
-              />
-            </div>
-          ))}
+    <section className="mx-auto max-w-2xl px-5 py-16 sm:px-8">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          setSubmitted(true)
+        }}
+        className="space-y-16"
+      >
+        {/* identity */}
+        <div className="space-y-8">
+          <SectionLabel index="01" title="Who you are" />
+          <Field label="FULL NAME" placeholder="Your name" />
+          <Field label="ROLE / TITLE" placeholder="Artist, Director, Producer…" />
+          <Field label="EMAIL" type="email" placeholder="you@studio.com" />
         </div>
 
-        <div className="mt-10">
-          {submitted ? (
-            <div className="flex flex-col items-center py-10 text-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border text-foreground">
-                <Check className="h-5 w-5" />
-              </span>
-              <p className="font-heading mt-6 text-xl font-medium text-foreground">
-                Briefing received.
-              </p>
-              <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Our studio will review your sonic architecture and respond within
-                two working days.
-              </p>
-            </div>
-          ) : step === 0 ? (
-            <div className="space-y-7">
-              <Field label="FULL NAME" placeholder="Your name" />
-              <Field label="ROLE / TITLE" placeholder="Artist, Director, Producer…" />
-              <Field label="EMAIL" type="email" placeholder="you@studio.com" />
-              <button
-                type="button"
-                onClick={() => setStep(1)}
-                className="group inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-xs font-semibold tracking-[0.16em] text-primary-foreground"
-              >
-                CONTINUE
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </button>
-            </div>
-          ) : step === 1 ? (
-            <div className="space-y-7">
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Select the sonic moods that resonate with your project. Choose as
-                many as apply.
-              </p>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {MOODS.map((m) => {
-                  const selected = selectedMoods.includes(m.id)
-                  return (
-                    <button
-                      key={m.id}
-                      type="button"
-                      onClick={() => toggleMood(m.id)}
-                      className="rounded-xl border p-4 text-left transition-colors"
-                      style={{
-                        borderColor: selected ? m.color : "var(--border)",
-                        backgroundColor: selected ? m.glow : "transparent",
-                      }}
-                      aria-pressed={selected}
-                    >
-                      <span className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">
-                        {m.index}
-                      </span>
-                      <span
-                        className="mt-2 block font-heading font-medium"
-                        style={{ color: selected ? m.color : "var(--foreground)" }}
-                      >
-                        {m.title}
-                      </span>
-                    </button>
-                  )
-                })}
-              </div>
-              <div className="flex items-center gap-3">
+        {/* moods */}
+        <div className="space-y-8">
+          <SectionLabel index="02" title="The energy you want" />
+          <div className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+            {MOODS.map((m) => {
+              const selected = selectedMoods.includes(m.id)
+              return (
                 <button
+                  key={m.id}
                   type="button"
-                  onClick={() => setStep(0)}
-                  className="rounded-full border border-border px-6 py-3 text-xs font-medium tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+                  onClick={() => toggleMood(m.id)}
+                  className="group relative p-1 text-left"
+                  aria-pressed={selected}
                 >
-                  BACK
+                  <span
+                    aria-hidden
+                    className="mood-aura pointer-events-none absolute -inset-4 -z-10 rounded-full blur-2xl"
+                    style={{
+                      background: `radial-gradient(60% 60% at 30% 25%, ${m.glow}, transparent 70%)`,
+                      opacity: selected ? 1 : 0,
+                    }}
+                  />
+                  <span className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">
+                    {m.index}
+                  </span>
+                  <span
+                    className="mt-2 block font-heading text-sm font-medium transition-colors duration-1000 ease-in-out"
+                    style={{ color: selected ? m.color : "var(--foreground)" }}
+                  >
+                    {m.title}
+                  </span>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setStep(2)}
-                  className="group inline-flex items-center gap-3 rounded-full bg-primary px-6 py-3 text-xs font-semibold tracking-[0.16em] text-primary-foreground"
-                >
-                  CONTINUE
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-7">
-              <Field
-                label="ASSET / DEMO LINK"
-                type="url"
-                placeholder="Share a cloud link to reference material, demos, or project briefs"
-              />
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="rounded-full border border-border px-6 py-3 text-xs font-medium tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  BACK
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setSubmitted(true)}
-                  className="rounded-full bg-primary px-6 py-3 text-xs font-semibold tracking-[0.16em] text-primary-foreground"
-                >
-                  SUBMIT REQUEST
-                </button>
-              </div>
-            </div>
-          )}
+              )
+            })}
+          </div>
         </div>
-      </div>
+
+        {/* reference */}
+        <div className="space-y-8">
+          <SectionLabel index="03" title="Reference material" />
+          <Field
+            label="ASSET / DEMO LINK"
+            type="url"
+            placeholder="Share a cloud link to references, demos, or project briefs"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="group inline-flex items-center gap-3 text-sm font-medium tracking-[0.18em] text-foreground"
+        >
+          <span className="nav-underline" data-active="true">
+            PROCEED TO BRIEFING
+          </span>
+          <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-2" />
+        </button>
+      </form>
     </section>
   )
 }

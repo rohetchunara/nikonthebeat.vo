@@ -31,7 +31,7 @@ export function MoodEngine() {
         </p>
       </Reveal>
 
-      <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
         {MOODS.map((m, i) => {
           const selected = m.id === moodId
           return (
@@ -39,18 +39,23 @@ export function MoodEngine() {
               <button
                 type="button"
                 onClick={() => setMoodId(m.id)}
-                className="group relative h-full w-full overflow-hidden rounded-2xl border p-6 text-left transition-all duration-500"
-                style={{
-                  borderColor: selected ? m.color : "var(--border)",
-                  backgroundColor: selected ? m.glow : "var(--card)",
-                }}
+                className="group relative h-full w-full p-2 text-left"
                 aria-pressed={selected}
               >
+                {/* soft ambient radial glow behind the active card */}
+                <span
+                  aria-hidden
+                  className="mood-aura pointer-events-none absolute -inset-6 -z-10 rounded-full blur-2xl"
+                  style={{
+                    background: `radial-gradient(60% 60% at 30% 25%, ${m.glow}, transparent 70%)`,
+                    opacity: selected ? 1 : 0,
+                  }}
+                />
                 <span className="font-mono text-[11px] tracking-[0.24em] text-muted-foreground">
                   {m.index}
                 </span>
                 <span
-                  className="font-heading mt-5 block text-xl font-medium tracking-tight transition-colors duration-500"
+                  className="font-heading mt-5 block text-xl font-medium tracking-tight transition-colors duration-1000 ease-in-out"
                   style={{ color: selected ? m.color : "var(--foreground)" }}
                 >
                   {m.title}
@@ -59,11 +64,11 @@ export function MoodEngine() {
                   {m.subtitle}
                 </span>
                 <span
-                  className="mt-6 block h-px w-full origin-left transition-transform duration-500"
+                  className="mt-6 block h-px w-full origin-left transition-all duration-1000 ease-in-out"
                   style={{
                     backgroundColor: m.color,
-                    transform: selected ? "scaleX(1)" : "scaleX(0.12)",
-                    opacity: selected ? 1 : 0.4,
+                    transform: selected ? "scaleX(1)" : "scaleX(0.1)",
+                    opacity: selected ? 0.9 : 0.25,
                   }}
                 />
               </button>

@@ -22,10 +22,10 @@ export const MOODS: Mood[] = [
     title: "DARK & VOID",
     subtitle: "Obsidian depth with pulsing crimson velvet",
     color: "oklch(0.64 0.22 22)",
-    glow: "oklch(0.55 0.22 22 / 26%)",
+    glow: "oklch(0.5 0.16 22 / 20%)",
     base: "oklch(0 0 0)",
     background:
-      "radial-gradient(60% 55% at 50% 0%, oklch(0.4 0.2 22 / 28%), transparent 60%), radial-gradient(50% 50% at 85% 90%, oklch(0.32 0.18 18 / 22%), transparent 65%), oklch(0 0 0)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.22 0.07 20 / 28%), transparent 72%), radial-gradient(45% 45% at 85% 95%, oklch(0.18 0.06 14 / 16%), transparent 70%), oklch(0.018 0.006 20)",
   },
   {
     id: "trust",
@@ -33,10 +33,10 @@ export const MOODS: Mood[] = [
     title: "PEACEFUL & TRUST",
     subtitle: "Deep emerald forest with soft gold accents",
     color: "oklch(0.78 0.14 150)",
-    glow: "oklch(0.6 0.16 158 / 22%)",
+    glow: "oklch(0.55 0.1 152 / 18%)",
     base: "oklch(0.13 0.03 158)",
     background:
-      "radial-gradient(60% 55% at 50% 0%, oklch(0.4 0.12 158 / 32%), transparent 62%), radial-gradient(45% 45% at 88% 88%, oklch(0.78 0.13 90 / 14%), transparent 62%), oklch(0.08 0.02 158)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.3 0.06 150 / 26%), transparent 72%), radial-gradient(45% 45% at 88% 92%, oklch(0.36 0.05 120 / 12%), transparent 68%), oklch(0.05 0.015 155)",
   },
   {
     id: "form",
@@ -44,10 +44,10 @@ export const MOODS: Mood[] = [
     title: "FORM",
     subtitle: "Royal violet architecture with silver highlights",
     color: "oklch(0.72 0.18 300)",
-    glow: "oklch(0.58 0.2 300 / 24%)",
+    glow: "oklch(0.52 0.12 300 / 18%)",
     base: "oklch(0.1 0.03 300)",
     background:
-      "radial-gradient(60% 55% at 50% 0%, oklch(0.42 0.18 300 / 32%), transparent 62%), radial-gradient(45% 45% at 12% 85%, oklch(0.78 0.02 300 / 12%), transparent 60%), oklch(0.07 0.02 300)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.3 0.08 300 / 24%), transparent 72%), radial-gradient(45% 45% at 12% 90%, oklch(0.4 0.03 300 / 10%), transparent 66%), oklch(0.05 0.015 300)",
   },
   {
     id: "resonance",
@@ -55,10 +55,10 @@ export const MOODS: Mood[] = [
     title: "RESONANCE",
     subtitle: "Warm bronze & brushed copper foundation",
     color: "oklch(0.78 0.13 65)",
-    glow: "oklch(0.66 0.14 60 / 24%)",
+    glow: "oklch(0.58 0.1 60 / 18%)",
     base: "oklch(0.12 0.03 60)",
     background:
-      "radial-gradient(60% 55% at 50% 0%, oklch(0.45 0.13 60 / 32%), transparent 62%), radial-gradient(45% 45% at 85% 90%, oklch(0.5 0.12 45 / 22%), transparent 62%), oklch(0.08 0.02 55)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.34 0.07 62 / 26%), transparent 72%), radial-gradient(45% 45% at 85% 92%, oklch(0.34 0.06 45 / 16%), transparent 70%), oklch(0.05 0.015 58)",
   },
 ]
 
