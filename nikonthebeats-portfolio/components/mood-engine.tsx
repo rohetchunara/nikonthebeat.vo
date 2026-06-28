@@ -31,46 +31,53 @@ export function MoodEngine() {
         </p>
       </Reveal>
 
-      <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-sm border border-zinc-800/60 bg-zinc-800/60 sm:grid-cols-2 lg:grid-cols-4">
         {MOODS.map((m, i) => {
           const selected = m.id === moodId
           return (
-            <Reveal key={m.id} delay={i * 0.08}>
+            <Reveal key={m.id} delay={i * 0.06} className="h-full">
               <button
                 type="button"
                 onClick={() => setMoodId(m.id)}
-                className="group relative h-full w-full p-2 text-left"
+                className="group relative flex h-full min-h-[15rem] w-full flex-col justify-between bg-background p-7 text-left transition-colors duration-700"
                 aria-pressed={selected}
               >
-                {/* soft ambient radial glow behind the active card */}
+                {/* active cell slowly fills with an ultra-soft premium gradient */}
                 <span
                   aria-hidden
-                  className="mood-aura pointer-events-none absolute -inset-6 -z-10 rounded-full blur-2xl"
+                  className="mood-aura pointer-events-none absolute inset-0"
                   style={{
-                    background: `radial-gradient(60% 60% at 30% 25%, ${m.glow}, transparent 70%)`,
+                    background: m.cellFill,
                     opacity: selected ? 1 : 0,
                   }}
                 />
-                <span className="font-mono text-[11px] tracking-[0.24em] text-muted-foreground">
-                  {m.index}
-                </span>
-                <span
-                  className="font-heading mt-5 block text-xl font-medium tracking-tight transition-colors duration-1000 ease-in-out"
-                  style={{ color: selected ? m.color : "var(--foreground)" }}
-                >
-                  {m.title}
-                </span>
-                <span className="mt-3 block text-sm leading-relaxed text-muted-foreground">
-                  {m.subtitle}
-                </span>
-                <span
-                  className="mt-6 block h-px w-full origin-left transition-all duration-1000 ease-in-out"
-                  style={{
-                    backgroundColor: m.color,
-                    transform: selected ? "scaleX(1)" : "scaleX(0.1)",
-                    opacity: selected ? 0.9 : 0.25,
-                  }}
-                />
+                <div className="relative flex items-start justify-between">
+                  <span className="font-mono text-[11px] tracking-[0.28em] text-muted-foreground">
+                    {m.index}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="h-1.5 w-1.5 rounded-full transition-all duration-700"
+                    style={{
+                      backgroundColor: m.color,
+                      opacity: selected ? 1 : 0.25,
+                      boxShadow: selected ? `0 0 12px 1px ${m.color}` : "none",
+                    }}
+                  />
+                </div>
+                <div className="relative">
+                  <span
+                    className="font-heading block text-2xl font-medium tracking-tight transition-colors duration-700 ease-in-out"
+                    style={{
+                      color: selected ? m.color : "var(--foreground)",
+                    }}
+                  >
+                    {m.title}
+                  </span>
+                  <span className="mt-3 block text-sm leading-relaxed text-muted-foreground">
+                    {m.subtitle}
+                  </span>
+                </div>
               </button>
             </Reveal>
           )
@@ -80,11 +87,14 @@ export function MoodEngine() {
       <Reveal delay={0.2}>
         <Link
           href="/showreel"
-          className="group mt-12 inline-flex items-center gap-3 text-sm tracking-[0.16em] text-foreground"
+          className="group mt-12 inline-flex items-center gap-4 rounded-sm border px-7 py-4 font-mono text-[11px] uppercase tracking-[0.28em] transition-colors duration-700"
+          style={{
+            borderColor: mood.color,
+            color: mood.color,
+            backgroundColor: "color-mix(in oklab, var(--mood) 8%, transparent)",
+          }}
         >
-          <span className="nav-underline" data-active="true">
-            HEAR THE {mood.title} REEL
-          </span>
+          HEAR THE {mood.title} REEL
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </Reveal>

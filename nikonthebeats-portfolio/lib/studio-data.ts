@@ -13,6 +13,8 @@ export type Mood = {
   base: string
   /** the full-page ambient background gradient stack */
   background: string
+  /** ultra-soft low-opacity gradient that fills the active matrix cell */
+  cellFill: string
 }
 
 export const MOODS: Mood[] = [
@@ -20,45 +22,53 @@ export const MOODS: Mood[] = [
     id: "void",
     index: "01",
     title: "DARK & VOID",
-    subtitle: "Obsidian depth with pulsing crimson velvet",
-    color: "oklch(0.64 0.22 22)",
-    glow: "oklch(0.5 0.16 22 / 20%)",
-    base: "oklch(0 0 0)",
+    subtitle: "Velvet aged burgundy over obsidian",
+    color: "#8c5a52",
+    glow: "oklch(0.42 0.09 24 / 16%)",
+    base: "#120606",
     background:
-      "radial-gradient(70% 60% at 50% 0%, oklch(0.22 0.07 20 / 28%), transparent 72%), radial-gradient(45% 45% at 85% 95%, oklch(0.18 0.06 14 / 16%), transparent 70%), oklch(0.018 0.006 20)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.24 0.07 22 / 26%), transparent 74%), radial-gradient(45% 45% at 85% 95%, oklch(0.18 0.05 16 / 14%), transparent 72%), #0c0404",
+    cellFill:
+      "linear-gradient(160deg, rgba(120,42,42,0.30) 0%, rgba(45,12,12,0.55) 55%, rgba(28,10,10,0.85) 100%)",
   },
   {
     id: "trust",
     index: "02",
     title: "PEACEFUL & TRUST",
-    subtitle: "Deep emerald forest with soft gold accents",
-    color: "oklch(0.78 0.14 150)",
-    glow: "oklch(0.55 0.1 152 / 18%)",
-    base: "oklch(0.13 0.03 158)",
+    subtitle: "Muted royal sage over deep onyx emerald",
+    color: "#5f8a72",
+    glow: "oklch(0.45 0.07 152 / 14%)",
+    base: "#08110d",
     background:
-      "radial-gradient(70% 60% at 50% 0%, oklch(0.3 0.06 150 / 26%), transparent 72%), radial-gradient(45% 45% at 88% 92%, oklch(0.36 0.05 120 / 12%), transparent 68%), oklch(0.05 0.015 155)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.26 0.05 152 / 22%), transparent 74%), radial-gradient(45% 45% at 88% 92%, oklch(0.3 0.04 120 / 10%), transparent 70%), #060d0a",
+    cellFill:
+      "linear-gradient(160deg, rgba(40,92,68,0.28) 0%, rgba(16,40,30,0.55) 55%, rgba(10,20,15,0.85) 100%)",
   },
   {
     id: "form",
     index: "03",
     title: "FORM",
-    subtitle: "Royal violet architecture with silver highlights",
-    color: "oklch(0.72 0.18 300)",
-    glow: "oklch(0.52 0.12 300 / 18%)",
-    base: "oklch(0.1 0.03 300)",
+    subtitle: "Sophisticated amethyst graphite architecture",
+    color: "#7a6a93",
+    glow: "oklch(0.45 0.08 300 / 14%)",
+    base: "#0d0813",
     background:
-      "radial-gradient(70% 60% at 50% 0%, oklch(0.3 0.08 300 / 24%), transparent 72%), radial-gradient(45% 45% at 12% 90%, oklch(0.4 0.03 300 / 10%), transparent 66%), oklch(0.05 0.015 300)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.26 0.06 300 / 22%), transparent 74%), radial-gradient(45% 45% at 12% 90%, oklch(0.3 0.03 300 / 9%), transparent 68%), #0a0610",
+    cellFill:
+      "linear-gradient(160deg, rgba(72,52,104,0.28) 0%, rgba(34,22,52,0.55) 55%, rgba(18,11,26,0.85) 100%)",
   },
   {
     id: "resonance",
     index: "04",
     title: "RESONANCE",
-    subtitle: "Warm bronze & brushed copper foundation",
-    color: "oklch(0.78 0.13 65)",
-    glow: "oklch(0.58 0.1 60 / 18%)",
-    base: "oklch(0.12 0.03 60)",
+    subtitle: "Burnt antique amber & brushed sepia copper",
+    color: "#9c7a4d",
+    glow: "oklch(0.5 0.07 64 / 14%)",
+    base: "#120c06",
     background:
-      "radial-gradient(70% 60% at 50% 0%, oklch(0.34 0.07 62 / 26%), transparent 72%), radial-gradient(45% 45% at 85% 92%, oklch(0.34 0.06 45 / 16%), transparent 70%), oklch(0.05 0.015 58)",
+      "radial-gradient(70% 60% at 50% 0%, oklch(0.3 0.06 64 / 24%), transparent 74%), radial-gradient(45% 45% at 85% 92%, oklch(0.3 0.05 46 / 13%), transparent 72%), #0c0804",
+    cellFill:
+      "linear-gradient(160deg, rgba(120,86,42,0.28) 0%, rgba(48,33,14,0.55) 55%, rgba(26,17,7,0.85) 100%)",
   },
 ]
 

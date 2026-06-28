@@ -127,7 +127,7 @@ export function Hero() {
         >
           <Link
             href="/showreel"
-            className="group inline-flex items-center gap-3 rounded-full px-6 py-3 text-xs font-semibold tracking-[0.18em] text-background transition-transform hover:scale-[1.03]"
+            className="group inline-flex items-center gap-3 rounded-sm px-7 py-4 font-mono text-[11px] uppercase tracking-[0.28em] text-background transition-colors duration-700"
             style={{ backgroundColor: "var(--mood)" }}
           >
             LISTEN TO THE REEL
@@ -135,7 +135,10 @@ export function Hero() {
           </Link>
           <Link
             href="/briefing"
-            className="inline-flex items-center gap-3 rounded-full border border-border px-6 py-3 text-xs font-medium tracking-[0.18em] text-foreground transition-colors hover:bg-secondary"
+            className="inline-flex items-center gap-3 rounded-sm border px-7 py-4 font-mono text-[11px] uppercase tracking-[0.28em] text-foreground transition-colors duration-700"
+            style={{
+              borderColor: "color-mix(in oklab, var(--mood) 45%, var(--border))",
+            }}
           >
             START A PROJECT
           </Link>
@@ -157,10 +160,10 @@ export function StatsBand() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
           >
-            <p className="font-mono text-5xl font-medium tracking-tight text-foreground sm:text-6xl">
+            <p className="font-heading text-7xl font-light leading-none tracking-tight text-foreground sm:text-8xl">
               {stat.value}
             </p>
-            <p className="font-mono mt-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <p className="font-mono mt-5 text-xs uppercase tracking-[0.2em] text-muted-foreground">
               {stat.label}
             </p>
           </motion.div>
