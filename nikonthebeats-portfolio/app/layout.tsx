@@ -6,6 +6,7 @@ import { ThemeEngineProvider } from '@/components/theme-engine'
 import { SiteNav } from '@/components/site-nav'
 import { SiteFooter } from '@/components/site-footer'
 import { PageTransition } from '@/components/page-transition'
+import { WhatsAppFab } from '@/components/whatsapp-fab'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({
@@ -65,6 +66,7 @@ export default function RootLayout({
             <main className="min-h-screen">{children}</main>
             <SiteFooter />
           </PageTransition>
+          <WhatsAppFab />
         </ThemeEngineProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

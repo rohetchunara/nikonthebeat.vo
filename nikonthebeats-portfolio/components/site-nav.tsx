@@ -40,14 +40,6 @@ export function SiteNav() {
               </Link>
             )
           })}
-          <a
-            href="https://wa.me/9779868573730"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-underline text-xs font-medium tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground"
-          >
-            WHATSAPP
-          </a>
           <Link
             href="/briefing"
             className="rounded-full bg-primary px-5 py-2 text-xs font-semibold tracking-[0.16em] text-primary-foreground transition-opacity hover:opacity-90"
@@ -80,15 +72,6 @@ export function SiteNav() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="https://wa.me/9779868573730"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="text-sm tracking-[0.18em] text-muted-foreground"
-            >
-              WHATSAPP
-            </a>
             <Link
               href="/briefing"
               onClick={() => setOpen(false)}
